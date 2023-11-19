@@ -1,15 +1,23 @@
 /* eslint-disable react/prop-types */
-// import style from '../styles/productList.module.css'
-
+import style from '../styles/productList.module.css'
 
 function Cards({ datos }) {
-  return (
-    <div>
-      {datos.map((dato, index) => (
-        <div key={index} className="card">
-          <p>{dato.name} -- {dato.description} -- {dato.price}</p> 
+	const sumarPrecios = () => {
+		const total = datos.reduce((acumulador, dato) => acumulador + parseFloat(dato.price), 0);
+		return total.toFixed(2);
+	};
+
+	return (
+    <div className={style.productList}>
+		<div className={style.placeList}>
+			{datos.map((dato) => (
+				<div key={dato.name+dato.price} className={style.cards}>
+				<p>{dato.name} -- {dato.description} -- {dato.price}</p> 
+				</div>
+			))}
+			<span>Total: {sumarPrecios()}</span>
         </div>
-      ))}
+
     </div>
   );
 }

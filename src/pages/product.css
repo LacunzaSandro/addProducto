@@ -1,0 +1,12 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  color: gray;
+  background-color: #e4e4eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

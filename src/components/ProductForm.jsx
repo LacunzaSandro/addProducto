@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-
-
+import FormInput from './Inputs/FormInput';
+import inputs from '../services/inputsInProductForm';
+import style from '../styles/productForm.module.css'
 
 function ProductForm({ setDatos }) {
+	const [validationErrors, setValidationErrors] = useState({});
 	const [nuevoDato, setNuevoDato] = useState(
 		{
 			name:'',
 			description: '',
-			price:''
+			price:'',
 		}
 		);
 
@@ -20,34 +22,59 @@ function ProductForm({ setDatos }) {
 			[name]: value,
 		};
 		setNuevoDato(newValues);
+
 	};
   
-	const manejarEnvio = (e) => {
-		e.preventDefault();
+	const manejarEnvio = () => {
 		setDatos((prevDatos) => [...prevDatos, nuevoDato]);
 		setNuevoDato({
 			name:'',
 			description: '',
-			price:''
+			price:'',
 		});
 	};
-  
+	
+
+	const handleButtonClickk = (e) => {
+		e.preventDefault();
+
+		const newValidationErrors = {};
+
+		for (const inputName in nuevoDato) {
+			const inputElement = document.getElementsByName(inputName)[0];
+			const pattern = new RegExp(inputElement.pattern);
+			if (!pattern.test(nuevoDato[inputName])) {
+			newValidationErrors[inputName] = true;
+			}
+		}
+	
+		setValidationErrors(newValidationErrors);
+
+		if (Object.keys(newValidationErrors).length === 0) {
+		manejarEnvio(e);
+		}
+	};
+
 	return (
-		<form onSubmit={manejarEnvio}>
-			<label>
-				Nombre del Producto:
-				<input type="text" value={nuevoDato.name} onChange={manejarCambios} name='name' />
-			</label>
-			<label>
-				Descripción del producto:
-				<input type="text" value={nuevoDato.description} onChange={manejarCambios} name='description' />
-			</label>
-			<label>
-				Precio del producto:
-				<input type="text" value={nuevoDato.price} onChange={manejarCambios} name='price' />
-			</label>
-			<button type="submit">Agregar</button>
-		</form>
+		<div className={style.productForm}>
+			<div className={style.formulario}>
+				<form onSubmit={manejarEnvio}>
+				<h1>Register</h1>
+				{inputs.map((input) => (
+
+					<FormInput
+					key={input.id}
+					{...input}
+					value={nuevoDato[input.name]}
+					onChange={manejarCambios}
+					error={validationErrors[input.name]}
+					errorMessage={input.errorMessage}
+					/>
+				))}
+				<button onClick={handleButtonClickk}>CARGAR PRODUCTO</button>
+				</form>
+			</div>
+		</div>
 	);
   }
 
