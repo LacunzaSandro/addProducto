@@ -1,5 +1,5 @@
 .productForm {
-  width: 35vw;
+  width: 30vw;
   height: 100vh;
   min-width: 400px;
   float: left;
@@ -28,5 +28,11 @@
 
   &:hover {
     background-color: rgb(145, 55, 230);
+  }
+}
+@media (max-width: 768px) {
+  .productForm {
+    width: 100%; /* Utilizar todo el ancho disponible */
+    float: none; /* Quitar el flotado */
   }
 }

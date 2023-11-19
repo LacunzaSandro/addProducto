@@ -9,7 +9,7 @@ function Product() {
 	return (
 		<div>
 			<ProductForm setDatos={setDatos} />
-			<Cards datos={datos} />
+			<Cards datos={datos} setDatos={setDatos}/>
 		</div>
 	);
 }

@@ -1,12 +1,13 @@
+html,
 body {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   color: gray;
   background-color: #e4e4eb;
-  display: flex;
   justify-content: center;
   align-items: center;
 }

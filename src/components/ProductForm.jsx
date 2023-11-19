@@ -11,6 +11,8 @@ function ProductForm({ setDatos }) {
 			name:'',
 			description: '',
 			price:'',
+			amount:0,
+			subtotal:0
 		}
 		);
 
@@ -31,6 +33,8 @@ function ProductForm({ setDatos }) {
 			name:'',
 			description: '',
 			price:'',
+			amount:0,
+			subtotal:0
 		});
 	};
 	
@@ -42,9 +46,11 @@ function ProductForm({ setDatos }) {
 
 		for (const inputName in nuevoDato) {
 			const inputElement = document.getElementsByName(inputName)[0];
-			const pattern = new RegExp(inputElement.pattern);
-			if (!pattern.test(nuevoDato[inputName])) {
-			newValidationErrors[inputName] = true;
+			if(inputElement && inputElement.pattern) {
+				const pattern = new RegExp(inputElement.pattern);
+				if (!pattern.test(nuevoDato[inputName])) {
+				newValidationErrors[inputName] = true;
+				}
 			}
 		}
 	
