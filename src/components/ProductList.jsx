@@ -7,8 +7,7 @@ function Cards({ datos }) {
     <div>
       {datos.map((dato, index) => (
         <div key={index} className="card">
-          {/* Renderizar tu card con los datos */}
-          <p>{dato} -- ooo</p> 
+          <p>{dato.name} -- {dato.description} -- {dato.price}</p> 
         </div>
       ))}
     </div>
