@@ -7,9 +7,13 @@ function Product() {
 	const [datos, setDatos] = useState([]);
 
 	return (
-		<div>
+		<div className='container'>
+			<div className='izquierda'>
 			<ProductForm setDatos={setDatos} />
+			</div>
+			<div className='derecha'>
 			<Cards datos={datos} setDatos={setDatos}/>
+			</div>
 		</div>
 	);
 }

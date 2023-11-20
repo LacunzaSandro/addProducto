@@ -65,7 +65,7 @@ function ProductForm({ setDatos }) {
 		<div className={style.productForm}>
 			<div className={style.formulario}>
 				<form onSubmit={manejarEnvio}>
-				<h1>Register</h1>
+				<h1>Producto</h1>
 				{inputs.map((input) => (
 
 					<FormInput

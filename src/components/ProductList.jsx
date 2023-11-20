@@ -33,15 +33,41 @@ function Cards({ datos, setDatos }) {
 	return (
     <div className={style.productList}>
 		<div className={style.placeList}>
-			{datos.map((dato) => (
+			{
+			datos.length > 0 ? (
+			datos.map((dato) => (
 				<div key={dato.name+dato.price} className={style.cards}>
-				<div>{dato.name} -- {dato.description} -- {dato.price} -- {dato.subtotal}</div> 
-				<button onClick={()=>substractAmount(dato)} >-</button>
-				<span>{dato.amount}</span>
-				<button onClick={()=>addAmount(dato)} >+</button>
+					<div className={style.cardText}>
+						<span className={style.textItem}></span>
+						<p><strong>Nombre:</strong>  {dato.name}</p>
+						{dato.description.length > 30 ? (
+						<p><strong>Descripción: </strong>
+						{dato.description.substring(0, 30)}... <a href='#'>Más</a>
+						</p>
+						) : (
+						<p><strong>Descripción: </strong>{dato.description}</p>
+						)}
+						<p><strong>Precio Unitario:</strong> {dato.price}</p>
+						<p><strong>Subtotal:</strong> {dato.subtotal}</p>		
+					</div > 
+					<div className={style.controls}>
+						<button onClick={()=>substractAmount(dato)} disabled={dato.amount === 0}>-</button>
+						<span>{dato.amount}</span>
+						<button onClick={()=>addAmount(dato)} >+</button>
+					</div>
 				</div>
-			))}
-			<p>Total: {sumarPrecios()}</p>
+			))
+			) : (
+				<div className={style.noItemsMessage}>
+					<p>No hay items disponibles</p>
+				</div>
+			)
+			}
+			{datos.length > 0 && (
+				<p className={style.total}>
+					<strong>Total:</strong> {sumarPrecios()}
+				</p>
+			)}
         </div>
     </div>
   );

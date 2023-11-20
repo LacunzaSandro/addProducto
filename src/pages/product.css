@@ -1,13 +1,38 @@
 html,
 body {
-  height: 100%;
-  width: 100%;
+  background-color: #e4e4eb;
   margin: 0;
   padding: 0;
-  overflow: auto;
+}
+.container {
+  flex-wrap: wrap;
   display: flex;
-  color: gray;
-  background-color: #e4e4eb;
-  justify-content: center;
-  align-items: center;
+}
+.izquierda {
+  width: 30%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: lightgray;
+}
+
+.derecha {
+  flex: 1;
+  width: 70%;
+  padding: 20px;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .izquierda,
+  .derecha {
+    width: 100%;
+    overflow: visible;
+  }
+  .derecha {
+    height: 100%;
+  }
+  .izquierda {
+    position: relative;
+  }
 }
