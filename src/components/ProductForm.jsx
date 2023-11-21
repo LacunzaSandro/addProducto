@@ -77,7 +77,7 @@ function ProductForm({ setDatos }) {
 					errorMessage={input.errorMessage}
 					/>
 				))}
-				<button onClick={handleButtonClickk}>CARGAR PRODUCTO</button>
+				<button onClick={handleButtonClickk} disabled={!nuevoDato.name || !nuevoDato.price}>CARGAR PRODUCTO</button>
 				</form>
 			</div>
 		</div>

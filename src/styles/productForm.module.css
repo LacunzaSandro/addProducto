@@ -38,3 +38,9 @@
     margin-bottom: 70px;
   }
 }
+.formulario button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: rgb(236, 195, 236);
+  border: 1px solid #ddd;
+}
